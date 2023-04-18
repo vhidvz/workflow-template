@@ -6,6 +6,7 @@ import {
 } from '@vhidvz/wfjs/core';
 import { AppProvider } from './app.provider';
 import { Injectable } from '@nestjs/common';
+import { DataDto, ValueDto } from './dtos';
 import { WorkflowJS } from '@vhidvz/wfjs';
 import { join } from 'path';
 
@@ -23,18 +24,21 @@ export class AppWorkflow extends WorkflowJS {
 
   @Node({ name: 'approval_gateway' })
   async approvalGateway(
-    @Data() data: string,
-    @Value() value: string,
+    @Data() data: DataDto,
+    @Value() value: ValueDto,
     @Act() activity: GatewayActivity,
   ) {
-    if (value !== 'no') activity.takeOutgoing({ name: 'parallel_gateway' });
+    if (value.local !== 'no')
+      activity.takeOutgoing({ name: 'parallel_gateway' });
     else activity.takeOutgoing({ name: 'some_task' }, { pause: true });
 
-    data = `${data}, ${await this.appProvider.getHello(value)}`;
+    data.global = `${data.global}, ${await this.appProvider.getHello(
+      value.local,
+    )}`;
   }
 
   @Node({ name: 'some_task' })
-  async someTask(@Value() value: string, @Act() activity: TaskActivity) {
+  async someTask(@Value() value: ValueDto, @Act() activity: TaskActivity) {
     activity.takeOutgoing();
 
     return `some value(${value}) to end event.`;
@@ -47,8 +51,8 @@ export class AppWorkflow extends WorkflowJS {
   }
 
   @Node({ name: 'end' })
-  async end(@Data() data: string, @Value() value: string) {
+  async end(@Data() data: DataDto, @Value() value: ValueDto) {
     // Interested what happened if: throw new Error('TA DA...');
-    data = `${data}, received a value from previous task(${value})`;
+    data.global = `${data.global}, received a value from previous task(${value.local})`;
   }
 }

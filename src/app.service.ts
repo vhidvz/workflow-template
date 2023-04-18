@@ -1,6 +1,7 @@
 import { AppRepository } from './app.repository';
 import { AppWorkflow } from './app.workflow';
 import { Injectable } from '@nestjs/common';
+import { DataDto, ValueDto } from './dtos';
 import { Context } from '@vhidvz/wfjs';
 
 @Injectable()
@@ -40,7 +41,7 @@ export class AppService {
    * `appRepository` with the `context` object obtained from executing the `appWorkflow` with the
    * provided `data` parameter.
    */
-  async create(data: string) {
+  async create(data: DataDto) {
     // if you have only one start point this is OK
     const { context } = await this.appWorkflow.execute({ data });
 
@@ -60,7 +61,7 @@ export class AppService {
    * @returns The `update` method is returning the updated context after executing the specified
    * activity on the given id.
    */
-  async update(id: string, activity: string, value: string) {
+  async update(id: string, activity: string, value: ValueDto) {
     const ctx = await this.appRepository.find(id);
 
     const { context } = await this.appWorkflow.execute({
