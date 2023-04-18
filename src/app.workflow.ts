@@ -4,9 +4,9 @@ import {
   GatewayActivity,
   TaskActivity,
 } from '@vhidvz/wfjs/core';
+import { Data as DataFlow, Value as ValueFlow } from './schemas';
 import { AppProvider } from './app.provider';
 import { Injectable } from '@nestjs/common';
-import { DataDto, ValueDto } from './dtos';
 import { WorkflowJS } from '@vhidvz/wfjs';
 import { join } from 'path';
 
@@ -24,8 +24,8 @@ export class AppWorkflow extends WorkflowJS {
 
   @Node({ name: 'approval_gateway' })
   async approvalGateway(
-    @Data() data: DataDto,
-    @Value() value: ValueDto,
+    @Data() data: DataFlow,
+    @Value() value: ValueFlow,
     @Act() activity: GatewayActivity,
   ) {
     if (value.local !== 'no')
@@ -38,7 +38,7 @@ export class AppWorkflow extends WorkflowJS {
   }
 
   @Node({ name: 'some_task' })
-  async someTask(@Value() value: ValueDto, @Act() activity: TaskActivity) {
+  async someTask(@Value() value: ValueFlow, @Act() activity: TaskActivity) {
     activity.takeOutgoing();
 
     return `some value(${value}) to end event.`;
@@ -51,7 +51,7 @@ export class AppWorkflow extends WorkflowJS {
   }
 
   @Node({ name: 'end' })
-  async end(@Data() data: DataDto, @Value() value: ValueDto) {
+  async end(@Data() data: DataFlow, @Value() value: ValueFlow) {
     // Interested what happened if: throw new Error('TA DA...');
     data.global = `${data.global}, received a value from previous task(${value.local})`;
   }

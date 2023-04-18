@@ -1,17 +1,22 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ContextInterface } from '@vhidvz/wfjs';
+import { ApiProperty } from '@nestjs/swagger';
 import { HydratedDocument } from 'mongoose';
 import { Token } from './token.schema';
 import { Status } from 'src/enums';
+import { Data } from './data.schema';
 
 @Schema()
 export class App implements ContextInterface {
-  @Prop({ type: String, required: true, index: true })
-  data: string;
+  @ApiProperty()
+  @Prop({ type: Data, required: true, index: true })
+  data: Data;
 
+  @ApiProperty({ enum: Status })
   @Prop({ type: String, enum: Status, required: true })
   status: Status;
 
+  @ApiProperty({ type: [Token] })
   @Prop({ type: [Object], schema: Token, required: true })
   tokens: Token[];
 }
