@@ -72,7 +72,7 @@ Base on flow definition exclusive gateway cannot automatically done, therefor wo
 }
 ```
 
-- _Step 2_: find a flow by mongo id by following `GET` request.
+- _Step 2_: find a flow by mongo id with the following `GET` request.
 
 ```sh
 curl --request GET \
