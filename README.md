@@ -2,13 +2,9 @@
 
 This repository has an example of creating a simple workflow microservice with [NestJS](https://github.com/nestjs/nest) and [WorkflowJS](https://github.com/vhidvz/workflow-js).
 
+# Diagram
+
 ![Simple Workflow](./diagram.svg)
-
-# Prerequisite
-
-- Git control version tools
-- NPM and NodeJS 18 or upper
-- Docker 23 or above whit Compose
 
 # Up and Running
 
