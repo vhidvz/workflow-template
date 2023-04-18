@@ -79,4 +79,4 @@ curl --request GET \
   --url http://localhost:3000/flow/643ef248f6dafc316b6a33d1
 ```
 
-__Response:__ Would be same as the previous result.
+__Response:__ it must be same as the previous result.
