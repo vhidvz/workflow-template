@@ -28,6 +28,8 @@ To start and run the project type `npm run start`, that's it...
 
 # Usage and Dangling
 
+Swagger UI is also exists and running on [http://[::1]:3000/api](http://[::1]:3000/api)
+
 ## _Step 1_
 
 create a flow by posting a request with plain data `Hi`.
