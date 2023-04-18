@@ -16,7 +16,7 @@ export class AppController {
   }
 
   @Post()
-  async create(@Body() data: DataDto) {
+  async create(@Body() data: DataDto): Promise<App> {
     return await this.appService.create(data);
   }
 
@@ -25,7 +25,7 @@ export class AppController {
     @Body() value: ValueDto,
     @Param('id') id: string,
     @Param('activity', ActivityPipe) activity: string,
-  ) {
+  ): Promise<App> {
     return await this.appService.update(id, activity, value);
   }
 }
