@@ -28,7 +28,9 @@ To start and run the project type `npm run start`, that's it...
 
 # Usage and Dangling
 
-## _Step 1_: create a flow by posting a request with plain data `Hi`.
+## _Step 1_
+
+create a flow by posting a request with plain data `Hi`.
 
 ```sh
 curl --request POST \
@@ -70,7 +72,9 @@ __Response:__ base on the flow definition exclusive gateway cannot automatically
 }
 ```
 
-## _Step 2_: find a flow by mongo id with the following `GET` request.
+## _Step 2_
+
+find a flow by mongo id with the following `GET` request.
 
 ```sh
 curl --request GET \
