@@ -32,7 +32,7 @@ To start and run the project type `npm run start`, that's it...
 
 ```sh
 curl --request POST \
-  --url http://localhost:3000/ \
+  --url http://localhost:3000/flow \
   --header 'Content-Type: text/plain' \
   --data Hi
 ```

@@ -23,6 +23,7 @@
     "@nestjs/core": "^9.4.0",
     "@nestjs/mongoose": "^9.2.2",
     "@nestjs/platform-express": "^9.4.0",
+    "@nestjs/swagger": "^6.3.0",
     "@vhidvz/wfjs": "^4.0.3",
     "mongoose": "^7.0.4",
     "reflect-metadata": "^0.1.13",
