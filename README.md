@@ -1,4 +1,4 @@
-# Simple Workflow Micro-Service Example
+# Simple Workflow Microservice
 
 This repository has an example of creating a simple workflow microservice with [NestJS](https://github.com/nestjs/nest) and [WorkflowJS](https://github.com/vhidvz/workflow-js).
 
