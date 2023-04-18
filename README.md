@@ -39,9 +39,7 @@ curl --request POST \
 }'
 ```
 
-__Response:__
-
-Base on flow definition exclusive gateway cannot automatically done, therefor workflow will pauses at this point.
+__Response:__ base on the flow definition exclusive gateway cannot automatically done, therefor workflow will pauses at this point.
 
 ```json
 {
