@@ -28,11 +28,55 @@ To start and run the project type `npm run start`, that's it...
 
 # Usage and Dangling
 
-- Step 1: create a flow by posting a request with plain data `Hi`.
+- _Step 1_: create a flow by posting a request with plain data `Hi`.
 
 ```sh
 curl --request POST \
   --url http://localhost:3000/flow \
-  --header 'Content-Type: text/plain' \
-  --data Hi
+  --header 'Content-Type: application/json' \
+  --data '{
+ "global": "Hi"
+}'
 ```
+
+__Response:__
+
+Base on flow definition exclusive gateway cannot automatically done, therefor workflow will pauses at this point.
+
+```json
+{
+  "data": {
+    "global": "Hi",
+    "_id": "643ef248f6dafc316b6a33d2"
+  },
+  "status": "paused",
+  "tokens": [
+    {
+      "id": "b792edad36578871",
+      "histories": [
+        {
+          "status": "completed",
+          "ref": "StartEvent_0do01j4",
+          "name": "start"
+        },
+        {
+          "status": "paused",
+          "ref": "Activity_0mra47f",
+          "name": "initial_task"
+        }
+      ]
+    }
+  ],
+  "_id": "643ef248f6dafc316b6a33d1",
+  "__v": 0
+}
+```
+
+- _Step 2_: find a flow by mongo id by following `GET` request.
+
+```sh
+curl --request GET \
+  --url http://localhost:3000/flow/643ef248f6dafc316b6a33d1
+```
+
+__Response:__ Would be same as the previous result.
