@@ -18,6 +18,6 @@ export class History {
   status: Status;
 
   @ApiProperty()
-  @Prop({ type: Value })
+  @Prop({ type: Value, required: false })
   value?: Value;
 }

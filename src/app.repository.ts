@@ -17,6 +17,6 @@ export class AppRepository {
   }
 
   async update(id: string, context: ContextInterface) {
-    return this.appModel.findByIdAndUpdate(id, context);
+    return this.appModel.findByIdAndUpdate(id, context, { new: true });
   }
 }

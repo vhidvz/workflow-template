@@ -70,6 +70,6 @@ export class AppService {
       context: Context.deserialize(ctx.toJSON()),
     });
 
-    return await this.appRepository.update(id, context);
+    return await this.appRepository.update(id, context.serialize());
   }
 }

@@ -19,10 +19,10 @@ export class AppWorkflow extends WorkflowJS {
 
   @Node({ name: 'start' })
   async start(@Act() activity: EventActivity) {
-    activity.takeOutgoing(null, { pause: true });
+    activity.takeOutgoing();
   }
 
-  @Node({ name: 'approval_gateway' })
+  @Node({ name: 'approval_gateway', pause: true })
   async approvalGateway(
     @Data() data: DataFlow,
     @Value() value: ValueFlow,
@@ -41,13 +41,24 @@ export class AppWorkflow extends WorkflowJS {
   async someTask(@Value() value: ValueFlow, @Act() activity: TaskActivity) {
     activity.takeOutgoing();
 
-    return `some value(${value}) to end event.`;
+    return { local: `some value(${value.local}) to end event.` };
   }
 
   @Node({ name: 'parallel_gateway' })
   async parallelGateway(@Act() activity: GatewayActivity) {
-    activity.takeOutgoing({ name: 'do_some_work' });
-    activity.takeOutgoing({ name: 'another_task' }, { pause: true });
+    activity.takeOutgoing(null, { pause: 'another_task' });
+  }
+
+  @Node({ name: 'another_task' })
+  async anotherTask(@Act() activity: TaskActivity) {
+    activity.takeOutgoing();
+  }
+
+  @Node({ name: 'review', pause: true })
+  async review(@Act() activity: TaskActivity) {
+    activity.takeOutgoing();
+
+    return { local: `review to end event.` };
   }
 
   @Node({ name: 'end' })
