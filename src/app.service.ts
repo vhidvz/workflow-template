@@ -45,7 +45,7 @@ export class AppService {
     // if you have only one start point this is OK
     const { context } = await this.appWorkflow.execute({ data });
 
-    return await this.appRepository.create(context);
+    return await this.appRepository.create(context.serialize());
   }
 
   /**
