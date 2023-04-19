@@ -28,13 +28,13 @@ export class AppWorkflow extends WorkflowJS {
     @Value() value: ValueFlow,
     @Act() activity: GatewayActivity,
   ) {
-    if (value.local !== 'no')
-      activity.takeOutgoing({ name: 'parallel_gateway' });
-    else activity.takeOutgoing({ name: 'some_task' }, { pause: true });
-
     data.global = `${data.global}, ${await this.appProvider.getHello(
       value.local,
     )}`;
+
+    if (value.local !== 'no')
+      activity.takeOutgoing({ name: 'parallel_gateway' });
+    else activity.takeOutgoing({ name: 'some_task' }, { pause: true });
   }
 
   @Node({ name: 'some_task' })
@@ -55,15 +55,15 @@ export class AppWorkflow extends WorkflowJS {
   }
 
   @Node({ name: 'review', pause: true })
-  async review(@Act() activity: TaskActivity) {
+  async review(@Value() value: ValueFlow, @Act() activity: TaskActivity) {
     activity.takeOutgoing();
 
-    return { local: `review to end event.` };
+    return { local: `${value.local} to end event.` };
   }
 
   @Node({ name: 'end' })
   async end(@Data() data: DataFlow, @Value() value: ValueFlow) {
-    // Interested what happened if: throw new Error('TA DA...');
+    // Interested what happened if: throw new HttpException('TA DA...', 402);
     data.global = `${data.global}, received a value from previous task(${value.local})`;
   }
 }
