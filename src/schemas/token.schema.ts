@@ -1,8 +1,8 @@
-import { Prop, Schema } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
-import { History } from './history.schema';
+import { History, HistorySchema } from './history.schema';
 
-@Schema()
+@Schema({ _id: false })
 export class Token {
   @ApiProperty()
   @Prop({ type: String })
@@ -17,6 +17,8 @@ export class Token {
   locked?: boolean;
 
   @ApiProperty({ type: [History] })
-  @Prop({ type: [Object], schema: History })
+  @Prop({ type: [HistorySchema] })
   histories: History[];
 }
+
+export const TokenSchema = SchemaFactory.createForClass(Token);

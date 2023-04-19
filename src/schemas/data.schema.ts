@@ -4,6 +4,6 @@ import { ApiProperty } from '@nestjs/swagger';
 @Schema()
 export class Data {
   @ApiProperty()
-  @Prop({ type: String })
+  @Prop({ type: String, required: true, trim: true, minlength: 1 })
   global: string;
 }
