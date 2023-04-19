@@ -1,8 +1,8 @@
 export enum Status {
-  Ready = 'ready',
-  Paused = 'paused',
-  Failed = 'failed',
-  Running = 'running',
   Completed = 'completed',
+  Failed = 'failed',
+  Paused = 'paused',
+  Ready = 'ready',
+  Running = 'running',
   Terminated = 'terminated',
 }
