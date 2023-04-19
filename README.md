@@ -581,3 +581,7 @@ __Response:__ status of context is terminated and could not resume again.
   "__v": 0
 }
 ```
+
+## License
+
+This project is licensed under the MIT License - SEE the [LICENSE](LICENSE) file for details
