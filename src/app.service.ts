@@ -45,7 +45,7 @@ export class AppService {
     // if you have only one start point this is OK
     const { context } = await this.appWorkflow.execute({ data });
 
-    return await this.appRepository.create(context.serialize());
+    return this.appRepository.create(context.serialize());
   }
 
   /**
@@ -65,13 +65,19 @@ export class AppService {
     try {
       const ctx = await this.appRepository.find(id);
 
+      if (!ctx)
+        throw new HttpException(
+          'flow with given id dose not exist',
+          HttpStatus.BAD_REQUEST,
+        );
+
       const { context } = await this.appWorkflow.execute({
         value,
         node: { name: activity },
         context: Context.deserialize(ctx.toJSON()),
       });
 
-      return await this.appRepository.update(id, context.serialize());
+      return this.appRepository.update(id, context.serialize());
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
     }
