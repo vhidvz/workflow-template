@@ -1,6 +1,6 @@
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { AppRepository } from './app.repository';
 import { AppWorkflow } from './app.workflow';
-import { Injectable } from '@nestjs/common';
 import { Data, Value } from './schemas';
 import { Context } from '@vhidvz/wfjs';
 
@@ -62,14 +62,18 @@ export class AppService {
    * activity on the given id.
    */
   async update(id: string, activity: string, value: Value) {
-    const ctx = await this.appRepository.find(id);
+    try {
+      const ctx = await this.appRepository.find(id);
 
-    const { context } = await this.appWorkflow.execute({
-      value,
-      node: { name: activity },
-      context: Context.deserialize(ctx.toJSON()),
-    });
+      const { context } = await this.appWorkflow.execute({
+        value,
+        node: { name: activity },
+        context: Context.deserialize(ctx.toJSON()),
+      });
 
-    return await this.appRepository.update(id, context.serialize());
+      return await this.appRepository.update(id, context.serialize());
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
+    }
   }
 }

@@ -63,7 +63,6 @@ export class AppWorkflow extends WorkflowJS {
 
   @Node({ name: 'end' })
   async end(@Data() data: DataFlow, @Value() value: ValueFlow) {
-    // Interested what happened if: throw new HttpException('TA DA...', 402);
     data.global = `${data.global}, received a value from previous task(${value.local})`;
   }
 }
