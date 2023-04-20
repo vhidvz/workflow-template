@@ -1,9 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { State, StateSchema } from './state.schema';
 import { ApiProperty } from '@nestjs/swagger';
-import { History, HistorySchema } from './history.schema';
+import { TokenInterface } from '@vhidvz/wfjs';
 
 @Schema({ _id: false })
-export class Token {
+export class Token implements TokenInterface {
   @ApiProperty()
   @Prop({ type: String })
   id: string;
@@ -16,9 +17,9 @@ export class Token {
   @Prop({ type: Boolean })
   locked?: boolean;
 
-  @ApiProperty({ type: [History] })
-  @Prop({ type: [HistorySchema] })
-  histories: History[];
+  @ApiProperty({ type: [State] })
+  @Prop({ type: [StateSchema] })
+  history: State[];
 }
 
 export const TokenSchema = SchemaFactory.createForClass(Token);

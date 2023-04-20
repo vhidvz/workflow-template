@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Token, TokenSchema } from './token.schema';
 import { ContextInterface } from '@vhidvz/wfjs';
 import { ApiProperty } from '@nestjs/swagger';
 import { HydratedDocument } from 'mongoose';
-import { Token, TokenSchema } from './token.schema';
-import { Status } from 'src/enums';
 import { Data } from './data.schema';
+import { Status } from 'src/enums';
 
 @Schema()
 export class App implements ContextInterface {

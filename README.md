@@ -53,7 +53,7 @@ __Response:__ base on the flow definition exclusive gateway `approval_gateway` c
   "tokens": [
     {
       "id": "cc5c8c5baa370eec",
-      "histories": [
+      "history": [
         {
           "status": "completed",
           "ref": "StartEvent_0do01j4",
@@ -115,7 +115,7 @@ __Response:__ because of `some_task` is a user task at this state based on [diag
   "tokens": [
     {
       "id": "cc5c8c5baa370eec",
-      "histories": [
+      "history": [
         {
           "ref": "StartEvent_0do01j4",
           "status": "completed",
@@ -176,7 +176,7 @@ __Response:__ status of context is terminated and could not resume again.
   "tokens": [
     {
       "id": "cc5c8c5baa370eec",
-      "histories": [
+      "history": [
         {
           "ref": "StartEvent_0do01j4",
           "status": "completed",
@@ -264,7 +264,7 @@ __Response:__ because of `another_task` is a user task at this state based on [d
   "tokens": [
     {
       "id": "9f053a81fa64e7fa",
-      "histories": [
+      "history": [
         {
           "ref": "StartEvent_0do01j4",
           "status": "completed",
@@ -296,7 +296,7 @@ __Response:__ because of `another_task` is a user task at this state based on [d
     },
     {
       "id": "f44c569ffee96983",
-      "histories": [
+      "history": [
         {
           "ref": "Activity_1yl745l",
           "status": "completed",
@@ -313,7 +313,7 @@ __Response:__ because of `another_task` is a user task at this state based on [d
     },
     {
       "id": "772454979815fdc1",
-      "histories": [
+      "history": [
         {
           "ref": "Activity_1mzlm3i",
           "status": "paused",
@@ -355,7 +355,7 @@ __Response:__ because of `review` is a user task at this state based on [diagram
   "tokens": [
     {
       "id": "9f053a81fa64e7fa",
-      "histories": [
+      "history": [
         {
           "ref": "StartEvent_0do01j4",
           "status": "completed",
@@ -387,7 +387,7 @@ __Response:__ because of `review` is a user task at this state based on [diagram
     },
     {
       "id": "f44c569ffee96983",
-      "histories": [
+      "history": [
         {
           "ref": "Activity_1yl745l",
           "status": "completed",
@@ -405,7 +405,7 @@ __Response:__ because of `review` is a user task at this state based on [diagram
     },
     {
       "id": "772454979815fdc1",
-      "histories": [
+      "history": [
         {
           "ref": "Activity_1mzlm3i",
           "status": "completed",
@@ -431,7 +431,7 @@ __Response:__ because of `review` is a user task at this state based on [diagram
     },
     {
       "id": "191b71808f807535",
-      "histories": [
+      "history": [
         {
           "ref": "Gateway_0ll1i6q",
           "status": "completed",
@@ -477,7 +477,7 @@ __Response:__ status of context is terminated and could not resume again.
   "tokens": [
     {
       "id": "9f053a81fa64e7fa",
-      "histories": [
+      "history": [
         {
           "ref": "StartEvent_0do01j4",
           "status": "completed",
@@ -509,7 +509,7 @@ __Response:__ status of context is terminated and could not resume again.
     },
     {
       "id": "f44c569ffee96983",
-      "histories": [
+      "history": [
         {
           "ref": "Activity_1yl745l",
           "status": "completed",
@@ -527,7 +527,7 @@ __Response:__ status of context is terminated and could not resume again.
     },
     {
       "id": "772454979815fdc1",
-      "histories": [
+      "history": [
         {
           "ref": "Activity_1mzlm3i",
           "status": "completed",
@@ -553,7 +553,7 @@ __Response:__ status of context is terminated and could not resume again.
     },
     {
       "id": "191b71808f807535",
-      "histories": [
+      "history": [
         {
           "ref": "Gateway_0ll1i6q",
           "status": "completed",

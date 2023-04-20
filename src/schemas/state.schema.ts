@@ -1,10 +1,11 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
-import { Status } from 'src/enums';
+import { StateInterface } from '@vhidvz/wfjs';
 import { Value } from './value.schema';
+import { Status } from 'src/enums';
 
 @Schema({ _id: false })
-export class History {
+export class State implements StateInterface {
   @ApiProperty()
   @Prop({ type: String })
   ref: string;
@@ -22,4 +23,4 @@ export class History {
   value?: Value;
 }
 
-export const HistorySchema = SchemaFactory.createForClass(History);
+export const StateSchema = SchemaFactory.createForClass(State);
