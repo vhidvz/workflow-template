@@ -13,7 +13,7 @@ export class AppRepository {
   }
 
   async create(context: ContextInterface) {
-    return await this.appModel.create(context);
+    return this.appModel.create(context);
   }
 
   async update(id: string, context: ContextInterface) {
