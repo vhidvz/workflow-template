@@ -24,7 +24,7 @@ To start and run the project type `npm run start`, that's it...
 
 # Usage and Dangling
 
-Swagger UI is also exists and running on [http://[::1]:3000/api](http://[::1]:3000/api). if you need to understand better please look at the `src/`[app.workflow.ts](https://github.com/vhidvz/workflow-template/blob/master/src/app.workflow.ts) file.
+Swagger UI is also exists and running on [http://[::1]:3000/api](http://[::1]:3000/api) if you need to understand better please look at the `src/`[app.workflow.ts](https://github.com/vhidvz/workflow-template/blob/master/src/app.workflow.ts) file.
 
 ## Scenario 1: Requested Service Not Approved
 
